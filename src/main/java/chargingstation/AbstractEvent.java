@@ -11,6 +11,9 @@ import org.springframework.transaction.support.TransactionSynchronizationAdapter
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -70,9 +73,10 @@ public class AbstractEvent {
     }
 
     // PVC Test
-    public void saveJsonToPvc(String strEvent, String strJson){
-        File file = new File("/mnt/aws/" + strEvent + "_json.txt");
-        if (file.exists()){
+    public void saveJsonToPvc(String strEvent, String strJson) {
+        Path path = Paths.get("/mnt/aws/");
+        if (Files.isDirectory(path)) {
+            File file = new File("/mnt/aws/" + strEvent + "_json.txt");
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(file));
                 writer.write(strJson);
