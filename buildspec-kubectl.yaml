@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    _PROJECT_NAME: "chargingstation-mountpart"
+    _PROJECT_NAME: "user16-chargingstation-mountpart"
     _POD_NAME: "mountpart" # low case character
 
 phases:
